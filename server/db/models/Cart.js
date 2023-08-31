@@ -1,9 +1,10 @@
 const { DataTypes } = require('sequelize');
-const sequelize = require('..');
+const { sequelize } = require('../db');
 
 const Cart = sequelize.define('cart', {
   uniqueCartId: DataTypes.STRING,
-  cartStatus: { type: DataTypes.ENUM, values: ['Open', 'CheckedOut']}
+  cartStatus: { type: DataTypes.ENUM, 
+    values: ['Open', 'CheckedOut']}
 });
 
 module.exports = {

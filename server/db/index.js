@@ -1,3 +1,5 @@
+const { sequelize } = require('./db');
+
 const { User } = require('./models/User');
 const { Item } = require('./models/Item');
 const { Cart } = require('./models/Cart');
@@ -17,4 +19,5 @@ module.exports = {
     Item,
     Cart,
     CartItem,
+    sequelize,
 };

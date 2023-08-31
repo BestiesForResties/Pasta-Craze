@@ -1,9 +1,12 @@
-const { DataTypes } = require('sequelize');
-const sequelize = require('../db');
+const { DataTypes, Sequelize } = require('sequelize');
+const { sequelize } = require('../db');
 
 const Item = sequelize.define('item', {
-    // Define your fields here
     name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    type: {
       type: DataTypes.STRING,
       allowNull: false,
     },
