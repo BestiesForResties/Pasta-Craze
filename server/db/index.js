@@ -14,6 +14,16 @@ Item.belongsToMany(Cart, { through: CartItem });  // An item can belong to multi
 CartItem.belongsTo(Cart);  // A cart item belongs to a cart
 CartItem.belongsTo(Item);  // A cart item belongs to an item
 
+User.afterCreate(async (user) => {
+  try {
+    // Create a new cart associated with the user
+    await Cart.create({ UserId: user.id });
+    console.log(`Cart created for user with ID ${user.id}`);
+  } catch (error) {
+    console.error('Error creating cart for user:', error);
+  }
+});
+
 module.exports = {
     User,
     Item,

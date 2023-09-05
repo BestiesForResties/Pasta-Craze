@@ -2,7 +2,7 @@ const { DataTypes } = require('sequelize');
 const { sequelize } = require('../db');
 
 const Cart = sequelize.define('cart', {
-  uniqueCartId: DataTypes.STRING,
+  userId: DataTypes.STRING,
   cartStatus: { type: DataTypes.ENUM, 
     values: ['Open', 'CheckedOut']}
 });
