@@ -5,16 +5,6 @@ const seed = async () => {
 sequelize.sync({force:true})
   .then(async () => {
     await User.bulkCreate([
-      { username: 'damianulloa',
-        email: 'damianulloa@email.com',
-        password: 'damian',
-        is_Admin: 0,
-      },
-      { username: 'miahuggins',
-        email: 'miahuggins@email.com',
-        password: 'mia',
-        is_Admin: 0,
-      },
       { username: 'admin',
         email: 'admin@email.com',
         password: 'test',
