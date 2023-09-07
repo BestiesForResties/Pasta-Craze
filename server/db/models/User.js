@@ -1,6 +1,5 @@
 const { DataTypes } = require('sequelize');
 const {sequelize} = require('../db');
-const { Cart } = require('./Cart');
 
 const User = sequelize.define('user', {
   id: {
@@ -30,25 +29,8 @@ const User = sequelize.define('user', {
     values: [1, 0],
     defaultValue: 0,
   },
-}, {
-  hooks: {
-    afterCreate: async function(user) {
-      const newCart = await Cart.create({ userId: user.id });
-      user.addCart
-    }
-  }
-});
-
-User.afterCreate(async (user) => {
-  try {
-    const newCart = await Cart.create({ userId: user.id });
-    console.log(`Cart created for user: ${user.username}`);
-  } catch (error) {
-    console.error(`Error creating cart for user ${user.username}:`, error);
-  }
 });
 
 module.exports = {
-    User,
-    Cart
+    User
 };

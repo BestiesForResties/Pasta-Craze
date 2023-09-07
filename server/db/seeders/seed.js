@@ -1,16 +1,29 @@
-const { User, Item, CartItem, Cart, sequelize } = require('../index');
+const { User, Item, Cart, sequelize } = require('../index');
 
 const seed = async () => {
 
 sequelize.sync({force:true})
   .then(async () => {
-    await User.bulkCreate([
-      { username: 'admin',
-        email: 'admin@email.com',
-        password: 'test',
-        is_Admin: 1
-      },
-  ]);
+  await User.create(
+    { username: 'admin',
+      email: 'admin@email.com',
+      password: 'test',
+      is_Admin: 1
+  });
+
+  await User.create(
+    { username: 'damian',
+      email: 'damian@email.com',
+      password: '1234',
+      is_Admin: 0
+  });
+
+  await User.create(
+    { username: 'mia',
+      email: 'mia@email.com',
+      password: '1234',
+      is_Admin: 0
+  });
 
   await Item.bulkCreate([
       {name: 'Penne',
