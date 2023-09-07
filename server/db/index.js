@@ -7,7 +7,18 @@ const { Cart } = require('./models/Cart');
 User.hasOne(Cart);  // A user can have one cart
 Cart.belongsTo(User);  // A cart belongs to a user
 
-Item.belongsToMany(Cart, { through: 'CartItem' });  // An item can belong to multiple carts through CartItem
+// Define the association between Item and Cart
+Item.belongsToMany(Cart, {
+  through: 'CartItems', // Custom through table name
+  foreignKey: 'itemId', // Foreign key in the through table for Item
+  otherKey: 'cartId',   // Foreign key in the through table for Cart
+});
+
+Cart.belongsToMany(Item, {
+  through: 'CartItems', // Same custom through table name
+  foreignKey: 'cartId', // Foreign key in the through table for Cart
+  otherKey: 'itemId',   // Foreign key in the through table for Item
+});
 
 User.afterCreate(async (user) => {
     try {

@@ -75,4 +75,15 @@ router.delete('/:id', async function(req, res, next) {
   }
 });
 
+//Get Users Cart
+router.get('/:id/cart', async function(req, res, next) {
+  try {
+    const id = parseInt(req.params.id);
+    const cart = await Cart.findOne({where:{userId}, include: Item});
+    res.send(cart);
+  } catch (error) {
+    // Handle any errors that may occur during the database query or response handling.
+    next(error);
+  }
+});
 module.exports = router;

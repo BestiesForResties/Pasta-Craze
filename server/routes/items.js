@@ -1,12 +1,22 @@
 var express = require('express');
 var router = express.Router();
-const { Item } = require('../db/index');
+const { Item, User, Cart } = require('../db/index');
 
 //get all items
 router.get('/', async function(req, res, next) {
   try {
     const items = await Item.findAll();
     res.send(items);
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.get('/:id', async function(req, res, next) {
+  try {
+    const itemId = parseInt(req.params.id);
+    const item = await Item.findByPk(itemId);
+    res.send(item);
   } catch (error) {
     next(error);
   }
@@ -89,6 +99,36 @@ router.delete('/:id', async function(req, res, next) {
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+//Add item to user cart
+router.post('/:itemId/add-to-cart/:userId', async (req, res) => {
+  try {
+    const userId = parseInt(req.params.userId);
+  
+    const user = await User.findByPk(req.params.userId);
+   
+    const itemId = parseInt(req.params.itemId);
+
+    const item = await Item.findByPk(itemId);
+
+    if (!item) {
+      return res.status(404).json({ message: 'Item not found' });
+    }
+
+    const cart = await Cart.findOne({where:{userId}, include: Item});
+    // Find or create the user's cart
+    if (!user || !cart) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    await cart.addItem(item);
+
+    res.status(200).json({ message: 'Items added to cart', cart });
+  } catch (error) {
+    console.error('Error adding item to cart for user:', error);
+    res.status(500).json({ message: 'Internal server error' });
   }
 });
 
