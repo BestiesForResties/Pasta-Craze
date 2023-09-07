@@ -18,11 +18,11 @@ router.get('/', async function(req, res, next) {
   }
 });
 
+//Get specific user
 router.get('/:id', async function(req, res, next) {
   try {
-    const id = req.params.id
-    const user = await User.findOne({where:{id:id}, include: Cart});
-    console.log(user);
+    const id = parseInt(req.params.id);
+    const user = await User.findByPk(id);
     res.send(user);
   } catch (error) {
     // Handle any errors that may occur during the database query or response handling.
@@ -30,6 +30,7 @@ router.get('/:id', async function(req, res, next) {
   }
 });
 
+//Post new user
 router.post('/', async function(req, res, next) {
   try {
     const { username, email, password } = req.body;
@@ -52,36 +53,25 @@ router.post('/', async function(req, res, next) {
   }
 });
 
-router.get('/:id/cart', async function(req,res,next) {
-    const id = req.params.id;
-    const cart = await Cart.findAll();
-    res.send(cart);
-})
+// delete user
+router.delete('/:id', async function(req, res, next) {
+  const userId = parseInt(req.params.id);
 
-router.post('/:id/add-to-cart/:itemId', async (req, res) => {
   try {
-    // Get the user (you'll need authentication middleware for this)
-    const user = await User.findByPk(req.params.id);
+    // Find the item by ID in the database
+    const user = await User.findByPk(userId);
 
-    // Get the item ID from the route parameter
-    const itemId = req.params.itemId;
-
-    // Find the item in the database
-    const item = await Item.findByPk(itemId);
-
-    if (!item) {
-      return res.status(404).json({ message: 'Item not found' });
+    if (!user) {
+      return res.status(404).json({ error: 'User not found' });
     }
 
-    // Find or create the user's cart
-    const cart = await Cart.findOrCreate({
-      where: { UserId: user.id },
-    });
+    // Delete the item from the database
+    await user.destroy();
 
-    res.status(200).json({ message: 'Item added to cart', cartItem });
+    res.json({ message: 'User deleted successfully' });
   } catch (error) {
-    console.error('Error adding item to cart:', error);
-    res.status(500).json({ message: 'Internal server error' });
+    console.error(error);
+    res.status(500).json({ error: 'Internal server error' });
   }
 });
 

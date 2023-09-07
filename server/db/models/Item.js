@@ -18,7 +18,7 @@ const Item = sequelize.define('item', {
       type: DataTypes.DECIMAL(20, 2),
       allowNull: false,
     },
-  });
+});
 
 module.exports = {
     Item
