@@ -75,6 +75,42 @@ router.delete('/:id', async function(req, res, next) {
   }
 });
 
+//Update User--
+router.put('/:id', async (req, res) => {
+  const userId = parseInt(req.params.id);
+  const updatedUser = req.body;
+  console.log(updatedUser);
+
+  try {
+    // Find the item by ID in the database
+    const user = await User.findByPk(userId);
+
+    if (!user) {
+      return res.status(404).json({ error: 'Item not found' });
+    }
+
+    // Update the item's properties with the provided data
+    if (updatedUser.username !== undefined) {
+      user.username = updatedUser.username;
+    }
+    if (updatedUser.email !== undefined) {
+      user.email = updatedUser.email;
+    }
+    if (updatedUser.password !== undefined) {
+      user.password = updatedUser.password;
+    }
+    
+    //with authentication implement ability to grant someone is_Admin
+
+    await user.save();
+
+    res.json({ message: 'User updated successfully', user });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
 //Get Users Cart
 router.get('/:id/cart', async function(req, res, next) {
   try {

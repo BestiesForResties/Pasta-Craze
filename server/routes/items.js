@@ -12,7 +12,19 @@ router.get('/', async function(req, res, next) {
   }
 });
 
-router.get('/:id', async function(req, res, next) {
+//Get Items by Category
+router.get('/category/:category', async function(req, res, next) {
+  try {
+    const category = req.params.category;
+    const items = await Item.findAll({where: {type: category}});
+    res.send(items);
+  } catch (error) {
+    next(error);
+  }
+});
+
+//GetItems by Id
+router.get('/id/:id', async function(req, res, next) {
   try {
     const itemId = parseInt(req.params.id);
     const item = await Item.findByPk(itemId);
@@ -44,7 +56,7 @@ router.post('/', async function(req, res, next) {
   }
 });
 
-//update item
+//update item by id
 router.put('/:id', async (req, res) => {
   const itemId = parseInt(req.params.id);
   const updatedItem = req.body;
@@ -80,7 +92,7 @@ router.put('/:id', async (req, res) => {
   }
 });
 
-//delete item
+//delete item by id
 router.delete('/:id', async function(req, res, next) {
   const itemId = parseInt(req.params.id);
 
