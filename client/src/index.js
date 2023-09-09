@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Navbar from './NavBar.js'
 import styles from './Navbar.module.css'
+import Footer from './Footer.js';
 import reportWebVitals from './reportWebVitals';
 
 const App = () => {
@@ -19,8 +20,8 @@ const App = () => {
 
 
 
+        <Footer/>
       
-        {/* The rest of your content */}
       </main>
     </div>
   );
