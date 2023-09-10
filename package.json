@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start":"",
+    "start":"npm run start-client && npm run start-dev",
     "start-dev": "node server/bin/www",
     "start-client": "cd client && npm start"
   },
