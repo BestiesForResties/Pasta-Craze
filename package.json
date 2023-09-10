@@ -3,7 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node server/bin/www"
+    "start":"",
+    "start-dev": "node server/bin/www",
+    "start-client": "cd client && npm start"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
