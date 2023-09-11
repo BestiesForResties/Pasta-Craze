@@ -13,7 +13,7 @@ const Navbar = () => {
       </ul>
       <div className={styles.cart}>
         <img src="/public/cart.jpeg" alt="" className={styles.cartImage} />
-        <div>{/* Counter logic here */}</div>
+       
       </div>
     </div>
   );
