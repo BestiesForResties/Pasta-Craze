@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import styles from './Navbar.module.css'; // Replace with the correct path to your CSS module
+import styles from './Navbar.module.css'; 
 
 const Navbar = () => {
   return (
@@ -21,12 +21,12 @@ const Navbar = () => {
           <img src="img/logo.png" alt="Pasta Craze Logo" className={styles.logo} />
         </div>
         <div className={styles.actionsContainer}>
-          {/* Sign Up / Log In button with styling */}
+         
           <Link to="/signin" className={`${styles.signInLink} ${styles.navLink}`}>
             Sign Up / Log In
           </Link>
 
-          {/* Link to the Cart page */}
+    
           <Link to="/cart" className={styles.cartButton}>
             <img src="/img/cart.png" alt="Shopping Cart" className={styles.cartIcon} />
             <span className={styles.cartText}>Cart (2)</span>
