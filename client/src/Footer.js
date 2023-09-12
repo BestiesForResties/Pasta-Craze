@@ -7,6 +7,12 @@ const Footer = () => {
       <div className={styles.item}>
        
       </div>
+      <div>
+        <h2> Contact 
+          <br /> 
+          
+        </h2>
+      </div>
       <div className={styles.item}>
         <div className={styles.card}>
           <h2 className={styles.motto}>
@@ -17,10 +23,10 @@ const Footer = () => {
           <h1 className={styles.title}>FIND OUR RESTAURANTS</h1>
           <p className={styles.text}>
             8374 PARK AVE 
-            <br />Bronx NewYork, 10458
+            <br />Bronx New York, 10458
             <br /> (718) 378-2929
           </p>
-          {/* Other address entries */}
+       
         </div>
         <div className={styles.card}>
           <h1 className={styles.title}>WORKING HOURS</h1>
