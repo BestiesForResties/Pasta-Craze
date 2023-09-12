@@ -1,29 +1,33 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Navbar from './NavBar.js'
-import styles from './Navbar.module.css'
-import Footer from './Footer.js';
-import reportWebVitals from './reportWebVitals';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import NavBar from './NavBar';
+import styles from './Navbar.module.css';
+import Footer from './Footer';
+import Home from './Home';
+import Menu from './Menu.js';
+import Contact from './Contact';
 
 const App = () => {
   return (
-    <div>
-      <Navbar />
-      <header className={styles.header}>
-        <h1 className={styles.heading}>Pasta Craze</h1>
-        <p className={styles.description}></p>
-      </header>
-      <main>
-        
-
-
-
-
-
-        <Footer/>
-      
-      </main>
-    </div>
+    <Router>
+      <div>
+        <NavBar />
+        <header className={styles.header}>
+          <h1 className={styles.heading}></h1>
+          <p className={styles.description}></p>
+        </header>
+        <main>
+          <Routes>
+            <Route path="/Home" element={<Home />} />
+            <Route path="/Menu" element={<Menu />} />
+            <Route path="/Contact" element={<Contact />} />
+          </Routes>
+          <Footer />
+        </main>
+      </div>
+    </Router>
   );
 };
+
 ReactDOM.render(<App />, document.getElementById('root'));
