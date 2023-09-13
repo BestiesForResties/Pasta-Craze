@@ -21,12 +21,11 @@ const Navbar = () => {
           <img src="img/logo.png" alt="Pasta Craze Logo" className={styles.logo} />
         </div>
         <div className={styles.actionsContainer}>
-          {/* Sign Up / Log In button with styling */}
+         
           <Link to="/signin" className={`${styles.signInLink} ${styles.navLink}`}>
             Sign Up / Log In
           </Link>
 
-          {/* Link to the Cart page */}
           <Link to="/cart" className={styles.cartButton}>
             <img src="/img/cart.png" alt="Shopping Cart" className={styles.cartIcon} />
             <span className={styles.cartText}>Cart (2)</span>
@@ -36,5 +35,4 @@ const Navbar = () => {
     </nav>
   );
 };
-
-export default Navbar;
+export default Navbar; 
