@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import styles from './Navbar.module.css'; // Replace with the correct path to your CSS module
+import styles from './Navbar.module.css'; 
 
 const Navbar = () => {
   return (
@@ -26,6 +26,7 @@ const Navbar = () => {
             Sign Up / Log In
           </Link>
 
+
           <Link to="/cart" className={styles.cartButton}>
             <img src="/img/cart.png" alt="Shopping Cart" className={styles.cartIcon} />
             <span className={styles.cartText}>Cart (2)</span>
@@ -35,4 +36,7 @@ const Navbar = () => {
     </nav>
   );
 };
-export default Navbar; 
+
+
+export default Navbar;
+
