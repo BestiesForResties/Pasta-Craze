@@ -6,23 +6,51 @@
   }
   
   .background-image {
+
     background-size: cover;
     background-position: center;
     width: 100%;
-    height: 100%;
+    height: 100vh; 
   }
-  
-  .textContainer {
+  .header {
     text-align: center;
-    color: #fff;
+    padding: 100px 0; 
   }
   
   .largeHeader {
-    font-size: 36px;
-    font-weight: bold;
-    margin-bottom: 20px;
+    font-size: 3rem;
+    color: rgb(17, 16, 16); 
   }
   
-  .smallHeader {
-    font-size: 24px;
+  .craze {
+    color: #fbf5f3; 
+  }
+  
+  .catchphrase {
+    font-size: 1.5rem; 
+    margin-top: 20px; 
+    color: rgb(240, 234, 234); 
+  }
+  
+  .orderButton {
+  
+    background-color: #000; 
+    color: #fff; 
+    border: none;
+    border-radius: 50%; 
+    padding: 15px 30px; 
+    font-size: 1rem; 
+    text-transform: uppercase; 
+    cursor: pointer;
+    transition: background-color 0.3s; 
+  
+ 
+    display: block;
+    margin: 20px auto; 
+    text-align: center;
+    width: fit-content;
+  }
+  
+  .orderButton:hover {
+    background-color: #333;
   }
