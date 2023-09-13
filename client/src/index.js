@@ -19,9 +19,9 @@ const App = () => {
         </header>
         <main>
           <Routes>
-            <Route path="/Home" element={<Home />} />
-            <Route path="/Menu" element={<Menu />} />
-            <Route path="/Contact" element={<Contact />} />
+            <Route path="/" element={<Home />} /> 
+            <Route path="/menu" element={<Menu />} />
+            <Route path="/contact" element={<Contact />} />
           </Routes>
           <Footer />
         </main>

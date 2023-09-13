@@ -26,7 +26,7 @@ const Navbar = () => {
             Sign Up / Log In
           </Link>
 
-    
+
           <Link to="/cart" className={styles.cartButton}>
             <img src="/img/cart.png" alt="Shopping Cart" className={styles.cartIcon} />
             <span className={styles.cartText}>Cart (2)</span>
@@ -37,4 +37,6 @@ const Navbar = () => {
   );
 };
 
+
 export default Navbar;
+
