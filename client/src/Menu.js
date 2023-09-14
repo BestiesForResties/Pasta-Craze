@@ -2,7 +2,7 @@ import React from 'react';
 import ChickenCarbonaraImage from './ChickenCarbonaraImage.jpg';
 import FettuccineAlfredoImage from './FettuccineAlfredoImage.jpg';
 import BakedZitiImage from './BakedZitiImage.jpeg';
-import LasagnaImage from './LasagnaImage.jpg';
+import LasagnaImage from './LasagnaImage.jpeg';
 import styles from './Menu.module.css';
 
 const Menu = ({ cart, setCart }) => {
@@ -13,7 +13,7 @@ const Menu = ({ cart, setCart }) => {
     {
       id: 1,
       name: 'Chicken Carbonara',
-      description: 'Creamy chicken carbonara is inspired by a classic Italian (Roman) pasta dish made with bacon or pancetta, whisked egg, and hard cheese.',
+      description: ' Pasta dish made with bacon or pancetta, whisked egg, and hard cheese.',
       price: 12.99,
       category: 'Pasta',
       image: ChickenCarbonaraImage,
@@ -21,7 +21,7 @@ const Menu = ({ cart, setCart }) => {
     {
       id: 2,
       name: 'Fettuccine Alfredo',
-      description: 'Creamy Alfredo sauce Fettuccine pasta with a homemade decadent Alfredo sauce made with 5 simple ingredients parmesan cheese and butter.',
+      description: 'Creamy Alfrexsdo sauce Fettuccine pasta with a homemade decadent sauce',
       price: 11.99,
       category: 'Pasta',
       image: FettuccineAlfredoImage,
@@ -58,9 +58,7 @@ const Menu = ({ cart, setCart }) => {
             <h2>{item.name}</h2>
             <p>{item.description}</p>
             <p>Price: ${item.price.toFixed(2)}</p>
-            <div className={styles.quantityDisplay}>
-              Qty: 1 
-            </div>
+            
             <button className={styles.addToCartButton} onClick={() => addToCart(item)}>
               Add to Cart
             </button>

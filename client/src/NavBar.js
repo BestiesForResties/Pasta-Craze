@@ -13,9 +13,7 @@ const Navbar = () => {
           <li className={styles.listItem}>
             <Link to="/menu" className={`${styles.navLink} ${styles.squareButton}`}>Menu</Link>
           </li>
-          <li className={styles.listItem}>
-            <Link to="/contact" className={`${styles.navLink} ${styles.squareButton}`}>Contact</Link>
-          </li>
+      
         </ul>
         <div className={styles.logoContainer}>
           <img src="img/logo.png" alt="Pasta Craze Logo" className={styles.logo} />
