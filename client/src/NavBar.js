@@ -20,14 +20,14 @@ const Navbar = () => {
         <div className={styles.logoContainer}>
           <img src="img/logo.png" alt="Pasta Craze Logo" className={styles.logo} />
         </div>
-        <div className={styles.actionsContainer}>
+        
           <Link to="/signin" className={`${styles.signInLink} ${styles.squareButton}`}>
-            Sign Up / Log In
+            Sign Up 
           </Link>
           <Link to="/cart" className={`${styles.cartButton} ${styles.squareButton}`}>
             <img src="/img/cart.png" alt="Shopping Cart" className={styles.cartIcon} />
           </Link>
-        </div>
+        
       </div>
     </nav>
   );
