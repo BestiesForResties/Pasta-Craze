@@ -1,0 +1,46 @@
+.menuContainer {
+    text-align: center;
+    background-color: #f2f2f2; 
+    padding: 20px;
+  }
+  
+  .menuItems {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px; 
+  }
+  
+  .menuItem {
+    width: 100%;
+    max-width: 300px; 
+    margin: 10px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+  }
+  
+  .menuItemImage {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+  }
+  
+  .addToCartButton {
+    background-color: black; 
+    color: white; 
+    padding: 10px 20px; 
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+    font-weight: bold;
+  }
+  
+  .checkoutButton {
+    background-color: black;
+    color: white;
+    padding: 15px 30px; 
+    cursor: pointer;
+    margin-top: 20px;
+    font-weight: bold;
+  }
