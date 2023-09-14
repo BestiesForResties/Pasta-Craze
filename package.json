@@ -5,7 +5,8 @@
   "scripts": {
     "start": "concurrently \"npm run start-dev\" \"npm run start-client\"",
     "start-dev": "node server/bin/server.js",
-    "start-client": "cd client && npm start"
+    "start-client": "cd client && npm start",
+    "seed": "cd server && npm run seed"
   },  
   "dependencies": {
     "cookie-parser": "~1.4.4",
