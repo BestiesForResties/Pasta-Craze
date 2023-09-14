@@ -1,5 +1,3 @@
-require("dotenv").config();
-
 /**
  * Module dependencies.
  */
@@ -12,7 +10,7 @@ var http = require('http');
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.NODE_DOCKER_PORT || '8080');
+var port = normalizePort('8080');
 app.set('port', port);
 
 /**
