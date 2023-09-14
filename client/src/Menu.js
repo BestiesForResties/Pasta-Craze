@@ -1,13 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ChickenCarbonaraImage from './ChickenCarbonaraImage.jpg';
 import FettuccineAlfredoImage from './FettuccineAlfredoImage.jpg';
 import BakedZitiImage from './BakedZitiImage.jpeg';
 import LasagnaImage from './LasagnaImage.jpeg';
 import styles from './Menu.module.css';
+import Cart from './Cart';
 
-const Menu = ({ cart, setCart }) => {
-
-  const cartItems = cart || [];
+const Menu = () => {
+  const [selectedItems, setSelectedItems] = useState([]);
 
   const seedData = [
     {
@@ -21,14 +21,14 @@ const Menu = ({ cart, setCart }) => {
     {
       id: 2,
       name: 'Fettuccine Alfredo',
-      description: 'Creamy Alfrexsdo sauce Fettuccine pasta with a homemade decadent sauce',
+      description: 'Creamy Alfredo sauce Fettuccine pasta with a homemade decadent sauce',
       price: 11.99,
       category: 'Pasta',
       image: FettuccineAlfredoImage,
     },
     {
       id: 3,
-      name: 'Baked Ziti',
+      name: ' Baked Ziti',
       description: 'A casserole with ziti pasta and a Neapolitan-style tomato sauce.',
       price: 10.99,
       category: 'Pasta',
@@ -45,7 +45,7 @@ const Menu = ({ cart, setCart }) => {
   ];
 
   const addToCart = (item) => {
-    setCart([...cartItems, item]);
+    setSelectedItems([...selectedItems, item]);
   };
 
   return (
@@ -58,7 +58,7 @@ const Menu = ({ cart, setCart }) => {
             <h2>{item.name}</h2>
             <p>{item.description}</p>
             <p>Price: ${item.price.toFixed(2)}</p>
-            
+
             <button className={styles.addToCartButton} onClick={() => addToCart(item)}>
               Add to Cart
             </button>
@@ -66,14 +66,12 @@ const Menu = ({ cart, setCart }) => {
         ))}
       </div>
       <button className={styles.checkoutButton} onClick={() => console.log('Checkout clicked')}>
-        Checkout ({cartItems.length} items)
+        Checkout ({selectedItems.length} items)
       </button>
+     
     </div>
   );
 };
 
 export default Menu;
-
-
-
  

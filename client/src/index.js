@@ -6,8 +6,8 @@ import styles from './Navbar.module.css';
 import Footer from './Footer';
 import Home from './Home';
 import Menu from './Menu.js';
-
 import Signup from './Signup.js'
+import Cart from './Cart.js'
 
 const App = () => {
   return (
@@ -23,6 +23,7 @@ const App = () => {
             <Route path="/" element={<Home />} /> 
             <Route path="/menu" element={<Menu />} />
             <Route path="/signup" element={<Signup />} />
+            <Route path="cart" element={<Cart/>} />
           </Routes>
           <Footer />
         </main>
