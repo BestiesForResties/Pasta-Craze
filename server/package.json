@@ -3,12 +3,13 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node .server/bin/www",
+    "start": "npm run seed && node ./bin/server.js",
     "seed": "node ./db/seeders/seed.js"
-  },
+  }, 
   "dependencies": {
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
+    "dotenv": "^16.3.1",
     "express": "~4.16.1",
     "http-errors": "~1.6.3",
     "jade": "~1.11.0",
@@ -16,5 +17,4 @@
     "sequelize": "^6.32.1",
     "sqlite3": "^5.1.6"
   }
-
 }

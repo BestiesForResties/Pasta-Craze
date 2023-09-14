@@ -6,7 +6,7 @@ const Item = sequelize.define('item', {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    type: {
+    category: {
       type: DataTypes.STRING,
       allowNull: false,
     },
