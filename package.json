@@ -18,5 +18,8 @@
   },
   "devDependencies": {
     "concurrently": "^8.2.1"
+  },
+  "publishConfig": {
+    "@YOUR-USERNAME:registry": "https://npm.pkg.github.com"
   }
 }
