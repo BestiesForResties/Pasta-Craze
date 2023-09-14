@@ -63,7 +63,7 @@
 
 footer {
   position: absolute;
-  bottom: 0; /* This will keep the footer at the bottom of the page */
+  bottom: 0;
   width: 100%;
   background-color: #222;
   color: white;
