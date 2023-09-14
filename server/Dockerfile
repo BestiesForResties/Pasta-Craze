@@ -1,13 +1,13 @@
 FROM node:16
 
-LABEL name="pasta-craze-server"
+WORKDIR /pasta-craze
 
-WORKDIR .
-
-COPY . .
+COPY package*.json ./
 
 RUN npm install
 
-CMD ["npm", "start"]
+COPY . .
 
 EXPOSE 8080
+
+CMD [ "npm", "start" ]
