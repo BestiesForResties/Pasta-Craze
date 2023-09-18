@@ -3,9 +3,9 @@ const { sequelize } = require('../db');
 
 const Cart = sequelize.define('cart', {
   cartStatus: { type: DataTypes.ENUM, 
-    values: ['Open', 'CheckedOut'],
+    values: ['open', 'closed'],
     allowNull: false,
-    defaultValue: 'Open',
+    defaultValue: 'open',
   }
 });
 

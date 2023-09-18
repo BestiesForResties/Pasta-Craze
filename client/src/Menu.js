@@ -1,77 +1,104 @@
-import React, { useState } from 'react';
-import ChickenCarbonaraImage from './ChickenCarbonaraImage.jpg';
-import FettuccineAlfredoImage from './FettuccineAlfredoImage.jpg';
-import BakedZitiImage from './BakedZitiImage.jpeg';
-import LasagnaImage from './LasagnaImage.jpeg';
+import React, { useEffect, useState } from 'react';
 import styles from './Menu.module.css';
-import Cart from './Cart';
+import fetchAPI from './helpers/fetchApi';
+import { useNavigate } from 'react-router-dom';
+
+const endpoint = {
+    getItems: '/item/',
+    addToCart: '/item/{itemId}/add-to-cart/{userId}',
+    getCart: '/users/{userId}/cart'
+}
+
+const requestMethod = {
+    get: 'GET',
+    post: 'POST',
+    put: 'PUT',
+    delete: 'DELETE',
+}
+
+const params = {
+    userId: '1',
+    itemId: null,
+    category: null,
+}
 
 const Menu = () => {
+  const navigate = useNavigate();
   const [selectedItems, setSelectedItems] = useState([]);
+  const [menuItems, setMenuItems] = useState([]);
 
-  const seedData = [
-    {
-      id: 1,
-      name: 'Chicken Carbonara',
-      description: ' Pasta dish made with bacon or pancetta, whisked egg, and hard cheese.',
-      price: 12.99,
-      category: 'Pasta',
-      image: ChickenCarbonaraImage,
-    },
-    {
-      id: 2,
-      name: 'Fettuccine Alfredo',
-      description: 'Creamy Alfredo sauce Fettuccine pasta with a homemade decadent sauce',
-      price: 11.99,
-      category: 'Pasta',
-      image: FettuccineAlfredoImage,
-    },
-    {
-      id: 3,
-      name: ' Baked Ziti',
-      description: 'A casserole with ziti pasta and a Neapolitan-style tomato sauce.',
-      price: 10.99,
-      category: 'Pasta',
-      image: BakedZitiImage,
-    },
-    {
-      id: 4,
-      name: 'Lasagna',
-      description: 'Made of very wide, flat sheets. Either term can also refer to an Italian dish made of stacked layers of lasagna alternating with fillings such as ragù, béchamel sauce, vegetables, cheeses, and seasonings and spices.',
-      price: 9.99,
-      category: 'Pasta',
-      image: LasagnaImage,
-    },
-  ];
-
-  const addToCart = (item) => {
-    setSelectedItems([...selectedItems, item]);
+  const getCart = async () => {
+    const cart = await fetchAPI({
+      method: requestMethod.get,
+      endpoint: endpoint.getCart,
+      urlParams: params
+      }).catch((error) => {
+      console.log(error);
+    });
+    setSelectedItems(cart.items);
   };
+
+  const getMenuItems = async () => {
+    const items = await fetchAPI({
+      method: requestMethod.get,
+      endpoint: endpoint.getItems,
+      urlParams: params
+      }).catch((error) => {
+      console.log(error);
+    });
+    setMenuItems(items);
+  };
+
+
+  const addToCart = async (item) => {
+    const itemId = JSON.stringify(item.id);
+    if (selectedItems.some(cartItem => JSON.stringify(cartItem.id) === itemId)) {
+      console.log('Item already in cart');
+      return;
+    }
+    params.itemId = itemId;
+    const items = await fetchAPI({
+      method: requestMethod.post,
+      endpoint: endpoint.addToCart,
+      urlParams: params
+      }).then(()=> {
+        setSelectedItems([...selectedItems, item]);
+      }).catch((error) => {
+      console.log(error);
+    });
+  };
+
+  const goToCheckout = async () => {
+    navigate('/cart');
+  }
+
+  useEffect(() => {
+    getCart()
+    getMenuItems()
+  },[]);
+
 
   return (
     <div className={styles.menuContainer} style={{ backgroundColor: '#f2f2f2' }}>
       <h1>Menu</h1>
       <div className={styles.menuItems}>
-        {seedData.map((item) => (
+        {menuItems.map((item) => (
           <div key={item.id} className={styles.menuItem}>
-            <img src={item.image} alt={item.name} className={styles.menuItemImage} />
+            <img src={item.image_url} alt={item.name} className={styles.menuItemImage} />
             <h2>{item.name}</h2>
             <p>{item.description}</p>
             <p>Price: ${item.price.toFixed(2)}</p>
-
             <button className={styles.addToCartButton} onClick={() => addToCart(item)}>
               Add to Cart
             </button>
           </div>
         ))}
       </div>
-      <button className={styles.checkoutButton} onClick={() => console.log('Checkout clicked')}>
+      <button className={styles.checkoutButton} onClick={goToCheckout}>
         Checkout ({selectedItems.length} items)
       </button>
-     
     </div>
   );
 };
 
 export default Menu;
- 

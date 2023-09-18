@@ -129,7 +129,7 @@ router.post('/:itemId/add-to-cart/:userId', async (req, res) => {
       return res.status(404).json({ message: 'Item not found' });
     }
 
-    const cart = await Cart.findOne({where:{userId}, include: Item});
+    const cart = await Cart.findOne({where:{userId, cartStatus: 'open'}, include: Item});
     // Find or create the user's cart
     if (!user || !cart) {
       return res.status(404).json({ message: 'User not found' });
@@ -140,6 +140,37 @@ router.post('/:itemId/add-to-cart/:userId', async (req, res) => {
     res.status(200).json({ message: 'Items added to cart', cart });
   } catch (error) {
     console.error('Error adding item to cart for user:', error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+});
+
+router.delete('/:itemId/remove-item/:userId', async (req, res) => {
+  try {
+    const userId = parseInt(req.params.userId);
+    const itemId = parseInt(req.params.itemId);
+
+    const user = await User.findByPk(userId);
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    const item = await Item.findByPk(itemId);
+    if (!item) {
+      return res.status(404).json({ message: 'Item not found' });
+    }
+
+    const cart = await Cart.findOne({ where: { userId }, include: Item });
+
+    if (!cart) {
+      return res.status(404).json({ message: 'Cart not found' });
+    }
+
+    // Remove the item from the cart
+    await cart.removeItem(item);
+
+    res.status(200).json({ message: 'Item removed from cart', cart });
+  } catch (error) {
+    console.error('Error removing item from cart for user:', error);
     res.status(500).json({ message: 'Internal server error' });
   }
 });

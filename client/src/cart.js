@@ -1,37 +1,84 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
+import fetchAPI from './helpers/fetchApi';
+
+const endpoint = {
+    getCart: '/users/{userId}/cart',
+    removeItem: '/item/{itemId}/remove-item/{userId}',
+    closeCart: '/cart/{userId}/'
+}
+
+const requestMethod = {
+    get: 'GET',
+    post: 'POST',
+    put: 'PUT',
+    delete: 'DELETE',
+}
+
+//userId can be set with login but for now we are only using user 1
+const params = {
+    userId: '1',
+    itemId: null,
+    category: null,
+}
 
 const Cart = ({ selectedItems = [] }) => {
   const [orderCompleted, setOrderCompleted] = useState(false);
+  const [cartItems, setCartItems] = useState([]);
   const [paymentInfo, setPaymentInfo] = useState({
     cardNumber: '',
     expirationDate: '',
     cvv: '',
   });
 
-  const handleRemoveItem = (id) => {
-    // Implement item removal logic here
-    // Update the selectedItems array by removing the item with the given id
-    const updatedItems = selectedItems.filter((item) => item.id !== id);
-    // Pass the updatedItems back to the Menu component to reflect the changes there
-    // You may need to use a callback function or another state management approach
-    console.log('Updated items:', updatedItems);
+    const getCart = async () => {
+        const cart = await fetchAPI({
+            method: requestMethod.get,
+            endpoint: endpoint.getCart,
+            urlParams: params
+            }).catch((error) => {
+            console.log(error);
+        });
+        setCartItems(cart.items);
+    };
+
+  //remove Item add to backend and implement here.
+  const handleRemoveItem = async (id) => {
+    params.itemId = id
+    
+    await fetchAPI({
+        method: requestMethod.delete,
+        endpoint: endpoint.removeItem,
+        urlParams: params
+        }).catch((error) => {
+        console.log(error);
+    });
+    getCart();
   };
 
-  const cartTotal = selectedItems.reduce((total, item) => total + item.price, 0);
+  const cartTotal = cartItems.reduce((total, item) => total + item.price, 0);
 
-  const handleCheckout = () => {
-    // Implement checkout logic, e.g., payment processing
-    // You can simulate order processing here
+  const handleCheckout = async () => {
+    await fetchAPI({
+        method: requestMethod.delete,
+        endpoint: endpoint.closeCart,
+        urlParams: params
+        }).catch((error) => {
+        console.log(error);
+    });
     setOrderCompleted(true);
   };
+
+  useEffect(() => {
+    getCart()
+  },[]);
 
   return (
     <div>
       <h1>Shopping Cart</h1>
-      {selectedItems.map((item) => (
+      {cartItems.map((item) => (
         <div key={item.id}>
-          <span>{item.name}</span>
-          <span>${item.price.toFixed(2)}</span>
+          <span>{item.name}</span><br/>
+          <span>${item.price.toFixed(2)}</span><br/>
           <button onClick={() => handleRemoveItem(item.id)}>Remove</button>
         </div>
       ))}
