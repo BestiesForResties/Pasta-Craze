@@ -57,7 +57,6 @@ const Menu = () => {
       return;
     }
     params.itemId = itemId;
-    console.log('params:', params);
     const items = await fetchAPI({
       method: requestMethod.post,
       endpoint: endpoint.addToCart,
@@ -67,8 +66,6 @@ const Menu = () => {
       }).catch((error) => {
       console.log(error);
     });
-    
-    console.log('test')
   };
 
   const goToCheckout = async () => {

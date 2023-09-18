@@ -7,7 +7,6 @@ function transformEndpoint(endpoint, params) {
             }
         }
     }
-    console.log('transformed url:', endpoint);
     return endpoint;
 }
 

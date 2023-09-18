@@ -10,7 +10,6 @@ const { User,
 router.get('/', async function(req, res, next) {
   try {
     const users = await User.findAll();
-    console.log(users);
     res.send(users);
   } catch (error) {
     // Handle any errors that may occur during the database query or response handling.
@@ -79,7 +78,6 @@ router.delete('/:id', async function(req, res, next) {
 router.put('/:id', async (req, res) => {
   const userId = parseInt(req.params.id);
   const updatedUser = req.body;
-  console.log(updatedUser);
 
   try {
     // Find the item by ID in the database

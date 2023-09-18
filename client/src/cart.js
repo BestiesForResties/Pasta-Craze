@@ -39,7 +39,6 @@ const Cart = ({ selectedItems = [] }) => {
             console.log(error);
         });
         setCartItems(cart.items);
-        console.log('cartItems:', cartItems);
     };
 
   //remove Item add to backend and implement here.
