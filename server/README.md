@@ -2,17 +2,17 @@ Here are the routes available:
 
 ITEMS:
 
-- Get all items, '/items/', GET
+- Get all items, '/item/', GET
 
 - Get all Items by category, '/items/category/{category}', GET
 
-- Get item by ID, '/items/id/{id}', GET
+- Get item by ID, '/item/id/{id}', GET
 
-- Create Item, '/items/', POST
+- Create Item, '/item/', POST
 
-- Update Item, '/items/{id}', PUT
+- Update Item, '/item/{id}', PUT
 
-- Delete item, '/items/{id}', DELETE
+- Delete item, '/item/{id}', DELETE
 
 - Add item to user cart, '/{itemID}/add-to-cart/{userId}', POST
 

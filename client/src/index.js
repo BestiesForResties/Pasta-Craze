@@ -7,7 +7,7 @@ import Footer from './Footer';
 import Home from './Home';
 import Menu from './Menu.js';
 import Signup from './Signup.js'
-import Cart from './Cart.js'
+import Cart from './cart.js'
 
 const App = () => {
   return (
@@ -22,7 +22,7 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Home />} /> 
             <Route path="/menu" element={<Menu />} />
-            <Route path="/signup" element={<Signup />} />
+            {/* <Route path="/signup" element={<Signup />} /> */}
             <Route path="cart" element={<Cart/>} />
           </Routes>
           <Footer />

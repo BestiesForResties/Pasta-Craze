@@ -114,7 +114,7 @@ router.put('/:id', async (req, res) => {
 //Get Users Cart
 router.get('/:id/cart', async function(req, res, next) {
   try {
-    const id = parseInt(req.params.id);
+    const userId = parseInt(req.params.id);
     const cart = await Cart.findOne({where:{userId}, include: Item});
     res.send(cart);
   } catch (error) {
