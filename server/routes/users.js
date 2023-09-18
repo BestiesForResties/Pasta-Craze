@@ -115,7 +115,7 @@ router.put('/:id', async (req, res) => {
 router.get('/:id/cart', async function(req, res, next) {
   try {
     const userId = parseInt(req.params.id);
-    const cart = await Cart.findOne({where:{userId}, include: Item});
+    const cart = await Cart.findOne({where:{userId, cartStatus: 'open'}, include: Item});
     res.send(cart);
   } catch (error) {
     // Handle any errors that may occur during the database query or response handling.

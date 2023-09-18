@@ -4,6 +4,7 @@ import fetchAPI from './helpers/fetchApi';
 const endpoint = {
     getCart: '/users/{userId}/cart',
     removeItem: '/item/{itemId}/remove-item/{userId}',
+    closeCart: '/cart/{userId}/'
 }
 
 const requestMethod = {
@@ -57,9 +58,14 @@ const Cart = ({ selectedItems = [] }) => {
 
   const cartTotal = cartItems.reduce((total, item) => total + item.price, 0);
 
-  const handleCheckout = () => {
-    // Implement checkout logic, e.g., payment processing
-    // You can simulate order processing here
+  const handleCheckout = async () => {
+    await fetchAPI({
+        method: requestMethod.delete,
+        endpoint: endpoint.closeCart,
+        urlParams: params
+        }).catch((error) => {
+        console.log(error);
+    });
     setOrderCompleted(true);
   };
 

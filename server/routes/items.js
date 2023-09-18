@@ -129,7 +129,7 @@ router.post('/:itemId/add-to-cart/:userId', async (req, res) => {
       return res.status(404).json({ message: 'Item not found' });
     }
 
-    const cart = await Cart.findOne({where:{userId}, include: Item});
+    const cart = await Cart.findOne({where:{userId, cartStatus: 'open'}, include: Item});
     // Find or create the user's cart
     if (!user || !cart) {
       return res.status(404).json({ message: 'User not found' });

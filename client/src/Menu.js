@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styles from './Menu.module.css';
 import fetchAPI from './helpers/fetchApi';
+import { useNavigate } from 'react-router-dom';
 
 const endpoint = {
     getItems: '/item/',
@@ -22,6 +23,7 @@ const params = {
 }
 
 const Menu = () => {
+  const navigate = useNavigate();
   const [selectedItems, setSelectedItems] = useState([]);
   const [menuItems, setMenuItems] = useState([]);
 
@@ -69,6 +71,10 @@ const Menu = () => {
     console.log('test')
   };
 
+  const goToCheckout = async () => {
+    navigate('/cart');
+  }
+
   useEffect(() => {
     getCart()
     getMenuItems()
@@ -85,14 +91,13 @@ const Menu = () => {
             <h2>{item.name}</h2>
             <p>{item.description}</p>
             <p>Price: ${item.price.toFixed(2)}</p>
-
             <button className={styles.addToCartButton} onClick={() => addToCart(item)}>
               Add to Cart
             </button>
           </div>
         ))}
       </div>
-      <button className={styles.checkoutButton} onClick={() => console.log('Checkout clicked')}>
+      <button className={styles.checkoutButton} onClick={goToCheckout}>
         Checkout ({selectedItems.length} items)
       </button>
     </div>
