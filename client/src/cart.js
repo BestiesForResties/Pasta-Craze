@@ -98,14 +98,14 @@ return (
           <div key={item.id} className={styles.cartItem}>
             <span>{item.name}</span>
             <br />
-            <span>${item.price.toFixed(2)}</span>
+            <span>${item.price}</span>
             <br />
             <button onClick={() => handleRemoveItem(item.id)}>Remove</button>
           </div>
         ))}
       </div>
       <div>
-        <strong>Total: ${cartTotal.toFixed(2)}</strong>
+        <strong>Total: ${cartTotal}</strong>
       </div>
     </div>
 
