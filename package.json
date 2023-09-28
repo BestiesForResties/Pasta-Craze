@@ -4,11 +4,15 @@
   "private": true,
   "scripts": {
     "start": "concurrently \"npm run start-dev\" \"npm run start-client\"",
-    "start-dev": "node server/bin/server.js",
-    "start-client": "npm start --prefix ./client",
+    "start-dev": "node ./server/bin/server.js",
+    "start-client": "react-scripts start",
     "seed": "cd server && npm run seed"
   },
   "dependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
     "cookie-parser": "~1.4.4",
     "cors": "^2.8.5",
     "debug": "~2.6.9",
@@ -16,12 +20,29 @@
     "express": "~4.16.1",
     "http-errors": "~1.6.3",
     "jade": "~1.11.0",
-    "morgan": "~1.9.1"
+    "morgan": "~1.9.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.16.0",
+    "react-scripts": "^5.0.1",
+    "web-vitals": "^2.1.4"
   },
   "devDependencies": {
     "concurrently": "^8.2.1"
   },
   "publishConfig": {
     "@YOUR-USERNAME:registry": "https://npm.pkg.github.com"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
