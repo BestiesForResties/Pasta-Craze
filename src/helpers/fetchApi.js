@@ -70,4 +70,4 @@ const fetchAPI = async ({ method, endpoint, urlParams = {}, body = null }) => {
     //     console.log('Response:', data);
     // });
 
-module.exports = fetchAPI;
+export default fetchAPI;
