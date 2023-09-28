@@ -29,10 +29,10 @@ sequelize.sync({force:true})
     {
       id: 1,
       name: 'Chicken Carbonara',
-      description:'creamy chicken carbonara is inspired by a classic Italian (Roman) pasta dish made with bacon or pancetta, whisked egg, and hard cheese.',
+      description:'creamy chicken a pasta dish made with bacon or pancetta, whisked egg, and hard cheese.',
       price: 12.99,
       category: 'Pasta',
-      image_url: 'https://hips.hearstapps.com/hmg-prod/images/hdm-chickencorbonara-14753-1564436398.jpg?crop=0.668xw:1.00xh;0.167xw,0&resize=1200:*,'
+      image_url: 'https://kitchenswagger.com/wp-content/uploads/2019/09/creamy-chicken-carbonara3.jpg',
     },
     {
       id: 2,
@@ -53,7 +53,7 @@ sequelize.sync({force:true})
     {
       id: 4,
       name: 'Lasagna',
-      description: 'Made of very wide, flat sheets. Either term can also refer to an Italian dish made of stacked layers of lasagna alternating with fillings such as ragù, béchamel sauce, vegetables, cheeses, and seasonings and spices..',
+      description: 'Made of very wide, flat sheets stacked layers of lasagna alternating with filling ragù, béchamel sauce, vegetables, cheeses, and seasonings and spices..',
       category: 'Pasta',
       price: 9.99,
       image_url: 'https://houseofnasheats.com/wp-content/uploads/2020/09/classic-lasagna-recipe-22.jpg',
