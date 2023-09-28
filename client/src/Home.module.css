@@ -19,11 +19,12 @@
   
   .largeHeader {
     font-size: 3rem;
-    color: rgb(143, 143, 143); 
+    color: rgb(170, 170, 170); 
   }
   
   .craze {
-    color: #fbf5f3; 
+    color: #ffffff; 
+    font-size: 40px;
   }
   
   .catchphrase {
@@ -39,7 +40,7 @@
     border: none;
     border-radius: 50%; 
     padding: 15px 30px; 
-    font-size: 1rem; 
+    font-size: 2rem; 
     text-transform: uppercase; 
     cursor: pointer;
     transition: background-color 0.3s; 

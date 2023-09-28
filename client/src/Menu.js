@@ -35,7 +35,9 @@ const Menu = () => {
       }).catch((error) => {
       console.log(error);
     });
-    setSelectedItems(cart.items);
+    if (cart.items) {
+      setSelectedItems(cart.items);
+    }
   };
 
   const getMenuItems = async () => {
@@ -83,15 +85,15 @@ const Menu = () => {
       <h1>Menu</h1>
       <div className={styles.menuItems}>
         {menuItems.map((item) => (
-          <div key={item.id} className={styles.menuItem}>
-            <img src={item.image_url} alt={item.name} className={styles.menuItemImage} />
-            <h2>{item.name}</h2>
-            <p>{item.description}</p>
-            <p>Price: ${item.price.toFixed(2)}</p>
-            <button className={styles.addToCartButton} onClick={() => addToCart(item)}>
-              Add to Cart
-            </button>
-          </div>
+       <div key={item.id} className={styles.menuItem}>  
+        <img src={item.image_url} alt={item.name} className={styles.menuItemImage} />
+        <h2>{item.name}</h2>
+        <p>{item.description}</p>
+        <p>Price: ${item.price.toFixed(2)}</p>
+        <button className={styles.addToCartButton} onClick={() => addToCart(item)}>
+         Add to Cart
+         </button>
+        </div>
         ))}
       </div>
       <button className={styles.checkoutButton} onClick={goToCheckout}>
