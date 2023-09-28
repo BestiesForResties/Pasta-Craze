@@ -89,7 +89,7 @@ const Menu = () => {
         <img src={item.image_url} alt={item.name} className={styles.menuItemImage} />
         <h2>{item.name}</h2>
         <p>{item.description}</p>
-        <p>Price: ${item.price.toFixed(2)}</p>
+        <p>Price: ${item.price}</p>
         <button className={styles.addToCartButton} onClick={() => addToCart(item)}>
          Add to Cart
          </button>
